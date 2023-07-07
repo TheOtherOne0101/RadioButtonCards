@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    .card {
+        border: 1px solid black;
+        padding: 10px;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    .card-selected {
+        background-color: lightblue;
+    }
+    </style>
+</head>
+<body>
+    <div class="card" onclick="selectCard('option1')">
+        <input type="radio" id="option1" name="option" value="Option 1" hidden>
+        <label for="option1">Option 1</label>
+    </div>
+
+    <div class="card" onclick="selectCard('option2')">
+        <input type="radio" id="option2" name="option" value="Option 2" hidden>
+        <label for="option2">Option 2</label>
+    </div>
+
+    <div class="card" onclick="selectCard('option3')">
+        <input type="radio" id="option3" name="option" value="Option 3" hidden>
+        <label for="option3">Option 3</label>
+    </div>
+
+    <script>
+    function selectCard(optionId) {
+        document.getElementById(optionId).checked = true;
+        var cards = document.getElementsByClassName('card');
+        for (var i = 0; i < cards.length; i++) {
+            cards[i].classList.remove('card-selected');
+        }
+        document.querySelector('label[for="' + optionId + '"]').parentNode.classList.add('card-selected');
+    }
+    </script>
+</body>
+</html>
